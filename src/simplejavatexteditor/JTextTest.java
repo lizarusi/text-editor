@@ -13,7 +13,7 @@ import java.io.IOException;
 public class JTextTest extends JTextPane implements DropTargetListener {
     private static final DataFlavor FILE_FLAVOR = DataFlavor.javaFileListFlavor;
     private static final long serialVersionUID = 1L;
-    public UndoManager undoManager = new UndoManager();
+    public UndoManager undo UndoManager();
     public JTextTest() {
         new DropTarget(this, this);
         this.setDragEnabled(true);
