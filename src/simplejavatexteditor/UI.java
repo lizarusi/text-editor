@@ -27,9 +27,10 @@ import java.io.IOException;
 public class UI extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private final Container container;
-	private final JTextTest textArea;
+	private final JTextPaneDrop textArea;
 	private StyledDocument doc;
 	private Action undoAction;
+	private final JScrollPane pane;
 	private final JMenuBar menuBar;
 	private final JMenu menuFile, menuEdit;
 	private final JMenuItem newFile, openFile, saveFile, close, cut, copy, paste, clearFile,
@@ -74,14 +75,15 @@ public class UI extends JFrame implements ActionListener {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		// Set a default font for the TextArea
-		textArea = new JTextTest();
+		textArea = new JTextPaneDrop();
 		textArea.setDragEnabled(true);
+		pane = new JScrollPane(textArea);
 		StyledDocument doc = textArea.getStyledDocument();
 		textArea.setFont(new Font("Century Gothic", Font.BOLD, 12));
 		textArea.setFont(new Font("Century Gothic", Font.BOLD, 12));
 		// This is why we didn't have to worry about the size of the TextArea!
 		getContentPane().setLayout(new BorderLayout()); // the BorderLayout bit makes it fill it automatically
-		getContentPane().add(textArea);
+		getContentPane().add(pane);
 		// Set the Menus
 		menuFile = new JMenu("File");
 		menuEdit = new JMenu("Edit");
@@ -294,7 +296,7 @@ public class UI extends JFrame implements ActionListener {
 		 */
 		private static final long serialVersionUID = 1L;
 
-		public SelectAllAction(String text, ImageIcon icon, String desc, Integer mnemonic, final JTextTest textArea) {
+		public SelectAllAction(String text, ImageIcon icon, String desc, Integer mnemonic, final JTextPaneDrop textArea) {
 			super(text, icon);
 			putValue(SHORT_DESCRIPTION, desc);
 			putValue(MNEMONIC_KEY, mnemonic);

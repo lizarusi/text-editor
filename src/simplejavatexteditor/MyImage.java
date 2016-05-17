@@ -10,6 +10,6 @@ public interface MyImage {
      * method for loading image to text editor
      * @param area
      */
-    public PixelImage display(JTextTest area) throws IOException;
+    public PixelImage display(JTextPaneDrop area) throws IOException;
 
 }

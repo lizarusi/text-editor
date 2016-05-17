@@ -1,8 +1,6 @@
 package simplejavatexteditor;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -17,7 +15,7 @@ public class PixelImageProxy implements MyImage{
         file_ = file;
     }
     @Override
-    public PixelImage display(JTextTest area) throws IOException{
+    public PixelImage display(JTextPaneDrop area) throws IOException{
         if(image != null) {
             // modify the image
             image = image.display(area);
@@ -27,6 +25,7 @@ public class PixelImageProxy implements MyImage{
                                           " press 'OK' to continue");
             //load the real image
             image = PixelImage.load(file_);
+            image = image.display(area);
             try {
                 // to delay setting icon for lazy load
                 Thread.currentThread().sleep(2000);
@@ -39,15 +38,4 @@ public class PixelImageProxy implements MyImage{
         }
         return image;
     }
-    private ActionListener closeJDialog = new ActionListener() {
-
-        public void actionPerformed(ActionEvent e) {
-
-            if (dialog.isShowing()) {
-                dialog.dispose();
-                System.out.println("dialog disposed");
-            }
-        }
-    };
-
 }

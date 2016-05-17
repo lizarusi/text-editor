@@ -10,11 +10,11 @@ import java.awt.dnd.*;
 import java.io.File;
 import java.io.IOException;
 
-public class JTextTest extends JTextPane implements DropTargetListener {
+public class JTextPaneDrop extends JTextPane implements DropTargetListener {
     private static final DataFlavor FILE_FLAVOR = DataFlavor.javaFileListFlavor;
     private static final long serialVersionUID = 1L;
-    public UndoManager undo UndoManager();
-    public JTextTest() {
+    public UndoManager undoManager = new UndoManager();
+    public JTextPaneDrop() {
         new DropTarget(this, this);
         this.setDragEnabled(true);
         setEditorKit(new AdvancedRTFEditorKit());
